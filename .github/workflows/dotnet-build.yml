@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 * * * *'  # Executa a cada hora
+    - cron: '0 * * * *'  
 
 jobs:
   build:
@@ -15,10 +15,24 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install dependencies
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Verify package.json presence in subdir
+      run: |
+        if [ ! -f app/package.json ]; then
+          echo "package.json not found in the app directory."
+          exit 1
+        fi
+
+    - name: Change to app directory
+      working-directory: app
       run: npm install
 
     - name: Run tests
+      working-directory: app
       run: npm test
 
     - name: Mostra Horario Atual
