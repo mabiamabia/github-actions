@@ -15,18 +15,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16'
-
-    - name: Verify package.json presence
-      run: |
-        if [ ! -f package.json ]; then
-          echo "package.json not found in the root directory."
-          exit 1
-        fi
-
     - name: Install dependencies
       run: npm install
 
