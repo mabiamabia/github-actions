@@ -18,7 +18,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '20'
+        node-version: '20' 
 
     - name: Change to app directory
       working-directory: app
@@ -30,5 +30,5 @@ jobs:
 
     - name: Mostra Horario Atual
       run: |
-        echo "Mostrando horario atual..."
+        echo "Mostrando horario atual.."
         echo "Horario Atual é $(date)"
